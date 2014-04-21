@@ -1,0 +1,29 @@
+/*Message CSS*/
+.dialog {
+	background: #e0e0e0;
+	border: 1px solid #909090;
+	padding: 4px;
+	width:560px;
+	position:absolute;
+}
+td{
+	font-size:10pt;
+}
+div{
+	font-size:9pt;
+}
+input{
+	border:1px solid #888888;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	color: #444466;
+	text-decoration: none;
+}
+a:hover {
+	color: #3333ff;
+	font-weight:bold;
+	text-decoration: none;
+}

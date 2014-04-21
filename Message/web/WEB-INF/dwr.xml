@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 指定DWR配置文件的DTD等信息 -->
+<!DOCTYPE dwr PUBLIC 
+	"-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN"
+	"http://getahead.org/dwr/dwr30.dtd">
+<dwr>
+	<allow>
+		<!-- 使用spring创建器，创建一个名为mm的JavaScript对象 -->
+		<create creator="spring" javascript="ms">
+			<!-- 将Spring容器中的messManager创建成名为mm的对象 -->
+			<param name="beanName" value="messageDwr"/>
+			<!-- 使用include元素定义哪些方法将被暴露到客户端 -->
+			<include method="createMessage"/>
+			<include method="createUser"/>
+			<include method="validateName"/>
+			<include method="loginPro"/>
+			<include method="isLogin"/>
+			<include method="getMessage"/>
+			<include method="getAllMessageByPage"/>
+		</create>
+		<!-- 定义DWR将MessageBean实例转换成JavaScript对象 -->
+		<convert converter="bean"
+			match="org.cbpmc.message.vo.MessageBean"/>
+		<!-- 定义DWR将MessageException实例转换成JavaScript对象 -->
+		<convert converter="bean" 
+			match="org.cbpmc.message.exception.MessageException"/>
+	</allow>
+</dwr>
+

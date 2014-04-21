@@ -1,0 +1,93 @@
+* {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+a {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#header {
+    background-image: url("../image/top_bg.jpg");
+}
+
+#middle {
+    background: url("../image/middle_bg.jpg");
+    height: 420px;
+}
+
+#line {
+    position: absolute;
+    top: 512px
+}
+
+#mid_left {
+    position: relative;
+    top: 2px;
+}
+
+#middle #mid_left img {
+    float: left;
+}
+
+#middle #mid_left #loginWin {
+    position: absolute;
+    top: 70px;
+    left: 610px;
+}
+
+
+#bot_left {
+    display: table-cell;
+}
+
+#bottom #bot_right {
+    background: url("../image/bottom_bg2.jpg") repeat-x;
+    display: table-cell;
+    width: 100%;
+}
+
+#bottom #copyright {
+    position: relative;
+    left: 400px;
+    top: -60px;
+    color: #ccc;
+}
+
+/*修改ExtJS css*/
+/*修改ExtJS css的按钮文本属性*/
+.x-btn-default-small .x-btn-inner {
+    font-family: Microsoft YaHei,tahoma,arial,verdana,sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/*修改ExtJS css的标题大小及文本属性*/
+.x-panel .x-panel-header-default-framed-top {
+    height : 30px;
+    border-width: 1px 1px 1px 1px;
+}
+.x-panel-header-text-container-default-framed {
+    font-size: 14px;
+    padding: 2px 2px 1px 0;
+    font-family: microsoft yahei,tahoma,arial,verdana,sans-serif;
+}
+
+/*修改ExtJS css的标签文本属性*/
+.x-form-item-label {
+    color: #04408c;
+    font: normal 14px Microsoft yahei,tahoma,arial,verdana,sans-serif;
+    margin: 10px 10px 0 15px;
+}
+
+/*修改ExtJS css的文本框位置属性*/
+.x-form-text {
+    margin-top: 10px;
+    margin-left: -25px;
+}
+
+/*修改ExtJS css的提示框位置属性*/
+.x-form-invalid-icon {
+    margin: 8px -10px 0;
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Hibernate映射文件的根元素 -->
+<hibernate-mapping package="org.cbpmc.message.domain">
+	<!-- 每个class元素映射一个持久化类 -->
+	<class name="User" table="user_inf">
+		<!-- 映射标识属性 -->
+		<id name="id" type="int" column="user_id">
+			<generator class="identity"/>
+		</id>
+		<!-- 映射name普通属性 -->
+		<property name="name" unique="true" type="string"/>
+		<property name="pass" type="string"/>
+		<!-- 映射1-N关联 -->
+		<set name="messages" inverse="true">
+			<key column="owner_id"/>
+			<one-to-many class="Message"/>
+		</set>
+	</class>
+</hibernate-mapping>
