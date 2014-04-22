@@ -84,6 +84,10 @@
     </bean>-->
     <bean id="helloWorldBean" class="org.cbpmc.login.HelloWorld"
           p:message="Hello, Struts integrated Spring."/>
+    <!--the second struts2 integration spring-->
+    <bean id="userBean" class="org.cbpmc.login.demo.UserImpl"/>
+    <bean id="userSpringAction" class="org.cbpmc.login.demo.UserSpringAction"
+          p:user-ref="userBean"/>
 
     <!-- 配置事务切面Bean,指定事务管理器 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
