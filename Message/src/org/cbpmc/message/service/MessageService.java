@@ -32,6 +32,16 @@ public interface MessageService
     int validateLogin(User user);
 
     /**
+     * 验证用户登录错误状态
+     * @param user 登录所用的用户名
+     * @return
+     * 用户名错误，返回1
+     * 密码错误，返回2
+     * 登录成功，返回3
+     */
+    int validateUserLogin(User user);
+
+    /**
      * 根据消息ID返回消息
      * @param msgId 消息ID
      * @return 指定ID对应的消息

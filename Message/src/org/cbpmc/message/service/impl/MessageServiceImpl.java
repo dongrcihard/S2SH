@@ -99,6 +99,49 @@ public class MessageServiceImpl implements MessageService
     }
 
     /**
+     * 验证用户登录错误状态
+     * @param user 登录所用的用户名
+     * @return
+     * 用户名错误，返回1
+     * 密码错误，返回2
+     * 登录成功，返回3
+     */
+    public int validateUserLogin(User user) {
+
+        User u = null;
+        try {
+            //查找用户名
+            u = userDao.findByName(user.getName());
+        } catch (Exception e) {
+            //捕获异常并显示
+            e.printStackTrace();
+            throw new MessageException("处理登录出现异常");
+        }
+
+        if (u == null) {
+            /*用户名错误，返回1*/
+            return 1;
+        } else {
+            try {
+                //核对用户名和密码
+                u = userDao.findByNameAndPass(user.getName()
+                        , user.getPass());
+            } catch (Exception e) {
+                //捕获异常并显示
+                e.printStackTrace();
+                throw new MessageException("处理登录出现异常");
+            }
+            if (u == null) {
+                /*密码错误，返回2*/
+                return 2;
+            } else {
+                /*登录成功，返回3*/
+                return 3;
+            }
+        }
+    }
+
+    /**
      * 根据消息ID返回消息
      * @param msgId 消息ID
      * @return 指定ID对应的消息

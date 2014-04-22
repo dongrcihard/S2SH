@@ -76,18 +76,10 @@
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate4.HibernateTransactionManager"
           p:sessionFactory-ref="sessionFactory"/>
-
     <!--在Spring容器中注册Bean-->
-<!--    <bean id="helloWorldBean" class="org.cbpmc.login.HelloWorld" >
-        &lt;!&ndash;设值注入&ndash;&gt;
-        <property name="message" value="Hello World!" />
-    </bean>-->
-    <bean id="helloWorldBean" class="org.cbpmc.login.HelloWorld"
-          p:message="Hello, Struts integrated Spring."/>
-    <!--the second struts2 integration spring-->
-    <bean id="userBean" class="org.cbpmc.login.demo.UserImpl"/>
-    <bean id="userSpringAction" class="org.cbpmc.login.demo.UserSpringAction"
-          p:user-ref="userBean"/>
+
+    <bean id="loginAction" class="org.cbpmc.login.test.UserAction"
+          p:myService-ref="messageService"/>
 
     <!-- 配置事务切面Bean,指定事务管理器 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
