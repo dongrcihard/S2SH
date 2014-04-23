@@ -2,22 +2,22 @@
 <!DOCTYPE hibernate-mapping
         PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- HibernateÓ³ÉäÎÄ¼þµÄ¸ùÔªËØ -->
+<!-- HibernateÓ³ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ä¸ï¿½Ôªï¿½ï¿½ -->
 <hibernate-mapping package="org.cbpmc.blog.domain">
-    <!-- Ã¿¸öclassÔªËØÓ³ÉäÒ»¸ö³Ö¾Ã»¯Àà -->
+    <!-- Ã¿ï¿½ï¿½classÔªï¿½ï¿½Ó³ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö¾Ã»ï¿½ï¿½ï¿½ -->
     <class name="Blog" table="blog_inf">
-        <!-- Ó³Éä±êÊ¶ÊôÐÔ -->
+        <!-- Ó³ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½ -->
         <id name="id" column="blog_id">
-            <!-- Ö¸¶¨Ö÷¼üÉú³ÉÆ÷²ßÂÔ -->
+            <!-- Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
             <generator class="identity"/>
         </id>
-        <!-- Ó³ÉäÆÕÍ¨ÊôÐÔ -->
+        <!-- Ó³ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ -->
         <property name="title" type="string"/>
         <property name="content" type="text"/>
         <property name="addTime" type="java.util.Date" column="add_time"/>
-        <!-- Ó³Éä¸ÃBlogÎÄÕÂ¹ØÁªµÄÈ«²¿ÆÀÂÛ -->
+        <!-- Ó³ï¿½ï¿½ï¿½ï¿½Blogï¿½ï¿½ï¿½Â¹ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
         <set name="comments" inverse="true">
-            <!-- Ó³ÉäÍâ¼üÁÐ -->
+            <!-- Ó³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
             <key column="blog_id"/>
             <one-to-many class="Comment"/>
         </set>
