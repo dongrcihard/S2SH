@@ -7,9 +7,10 @@
 <struts>
     <constant name="struts.devMode" value="true"/>
     <constant name="struts.objectFactory" value="spring" />
+    <constant name="struts.action.extension" value="action"/>
 
     <package name="extjs-struts" namespace="/" extends="json-default">
-        <action name="userAction" class="loginAction">
+        <action name="user" class="loginAction">
             <result type="json" />
         </action>
     </package>
