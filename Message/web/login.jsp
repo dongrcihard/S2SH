@@ -13,9 +13,6 @@
     <script type="text/javascript" src="ExtJS/ext-all.js"></script>
     <script type="text/javascript" src="ExtJS/ext-lang-zh_CN.js"></script>
     <link href="css/html.css" rel="stylesheet" type="text/css"/>
-    <script type='text/javascript' src='leedwr/engine.js'></script>
-    <script type='text/javascript' src='leedwr/util.js'></script>
-    <script type='text/javascript' src='leedwr/interface/ms.js'></script>
     <script type="text/javascript" src="javascript/login_window.js"></script>
     <title>欢迎光临高速清分专用设备实时远程专家诊断系统</title>
 </head>
