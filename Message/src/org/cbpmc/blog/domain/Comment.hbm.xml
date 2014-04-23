@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Hibernate映射文件的根元素 -->
+<hibernate-mapping package="org.cbpmc.blog.domain">
+    <!-- 每个class元素映射一个持久化类 -->
+    <class name="Comment" table="comment_inf">
+        <!-- 映射标识属性 -->
+        <id name="id" column="comment_id">
+            <!-- 指定主键生成器策略 -->
+            <generator class="identity"/>
+        </id>
+        <!-- 映射普通属性 -->
+        <property name="user" type="string"/>
+        <property name="email" type="string"/>
+        <property name="url" type="string"/>
+        <property name="content" type="text"/>
+        <property name="addTime" type="java.util.Date"
+                  column="add_time"/>
+        <!-- 映射该评论关联的Blog文章 -->
+        <many-to-one name="blog" class="Blog"
+                     column="blog_id" not-null="true"/>
+    </class>
+</hibernate-mapping>
