@@ -9,11 +9,11 @@ a {
 }
 
 #header {
-    background-image: url("../image/top_bg.jpg");
+    background-image: url("../image/login/top_bg.jpg");
 }
 
 #middle {
-    background: url("../image/middle_bg.jpg");
+    background: url("../image/login/middle_bg.jpg");
     height: 420px;
 }
 
@@ -43,7 +43,7 @@ a {
 }
 
 #bottom #bot_right {
-    background: url("../image/bottom_bg2.jpg") repeat-x;
+    background: url("../image/login/bottom_bg2.jpg") repeat-x;
     display: table-cell;
     width: 100%;
 }

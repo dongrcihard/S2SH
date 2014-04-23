@@ -2,7 +2,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.0">
 
     <display-name>Struts2Embed</display-name>
@@ -21,11 +21,11 @@
     <filter>
         <filter-name>struts2</filter-name>
         <!--指定Filter的实现类，此处使用的是Struts2提供的拦截器类-->
-        <filter-class> org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter </filter-class>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>struts2</filter-name>	<!--Filter的名字，该名字必须是filter元素中已声明过的过滤器名字-->
-        <url-pattern>/*</url-pattern>		<!--定义Filter负责拦截的URL地址-->
+        <url-pattern>*.action</url-pattern>		<!--定义Filter负责拦截的URL地址-->
     </filter-mapping>
 
     <!-- 配置DWR的核心Servlet -->

@@ -36,6 +36,8 @@
                 <!-- 以下用来列出Hibernate映射文件 -->
                 <value>org/cbpmc/message/domain/User.hbm.xml</value>
                 <value>org/cbpmc/message/domain/Message.hbm.xml</value>
+                <value>org/cbpmc/blog/domain/Blog.hbm.xml</value>
+                <value>org/cbpmc/blog/domain/Comment.hbm.xml</value>
             </list>
         </property>
         <!-- 定义Hibernate的SessionFactory的属性 -->
@@ -70,6 +72,18 @@
           class="org.cbpmc.message.service.impl.MessageServiceImpl"
           p:userDao-ref="userDao"
           p:messDao-ref="messsageDao"/>
+
+    <bean id="loginAction" class="org.cbpmc.login.test.UserAction"
+          p:myService-ref="messageService"/>
+
+    <bean id="blogDao" class="org.cbpmc.blog.dao.impl.BlogDaoHibernate"
+          p:sessionFactory-ref="sessionFactory"/>
+    <bean id="commentDao" class="org.cbpmc.blog.dao.impl.CommentDaoHibernate"
+          p:sessionFactory-ref="sessionFactory"/>
+    <bean id="blogService" class="org.cbpmc.blog.service.impl.BlogServiceImpl"
+          p:blogDao-ref="blogDao"
+          p:commentDao-ref="commentDao"/>
+
     <!-- 配置Hibernate的局部事务管理器，使用HibernateTransactionManager类 -->
     <!-- 该类实现PlatformTransactionManager接口，是针对Hibernate的特定实现-->
     <!-- 配置HibernateTransactionManager时需要依注入SessionFactory的引用 -->
@@ -77,10 +91,6 @@
           class="org.springframework.orm.hibernate4.HibernateTransactionManager"
           p:sessionFactory-ref="sessionFactory"/>
     <!--在Spring容器中注册Bean-->
-
-    <bean id="loginAction" class="org.cbpmc.login.test.UserAction"
-          p:myService-ref="messageService"/>
-
     <!-- 配置事务切面Bean,指定事务管理器 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <!-- 用于配置详细的事务语义 -->
@@ -94,7 +104,7 @@
     <aop:config>
         <!-- 配置一个切入点，匹配指定包下所有以Impl结尾的类执行的所有方法 -->
         <aop:pointcut id="leeService"
-                      expression="execution(* org.cbpmc.message.service.impl.*Impl.*(..))"/>
+                      expression="execution(* org.cbpmc.*.service.impl.*Impl.*(..))"/>
         <!-- 指定在leeService切入点应用txAdvice事务切面 -->
         <aop:advisor advice-ref="txAdvice"
                      pointcut-ref="leeService"/>

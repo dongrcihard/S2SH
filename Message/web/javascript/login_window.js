@@ -57,7 +57,7 @@ Ext.onReady(function () {
                         }
                         //提交到服务器操作
                         form1.form.doAction('submit', {
-                            url: 'userAction',
+                            url: 'user.action',
                             method: 'post',
                             success: function (form, action) {
                                 document.location = "index.jsp";
