@@ -30,7 +30,6 @@ public class Blog
         this.title = title;
         this.content = content;
         this.addTime = addTime;
-        this.comments = comments;
     }
 
     // id的setter和getter方法

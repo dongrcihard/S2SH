@@ -16,8 +16,7 @@
         <property name="email" type="string"/>
         <property name="url" type="string"/>
         <property name="content" type="text"/>
-        <property name="addTime" type="java.util.Date"
-                  column="add_time"/>
+        <property name="addTime" type="java.util.Date"/>
         <!-- 映射该评论关联的Blog文章 -->
         <many-to-one name="blog" class="Blog"
                      column="blog_id" not-null="true"/>
