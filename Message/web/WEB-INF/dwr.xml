@@ -24,6 +24,36 @@
 		<!-- 定义DWR将MessageException实例转换成JavaScript对象 -->
 		<convert converter="bean" 
 			match="org.cbpmc.message.exception.MessageException"/>
-	</allow>
+
+        <!-- 使用spring创建器，创建一个名为am的JavaScript对象 -->
+        <create creator="spring" javascript="am">
+            <!-- 将Spring容器中的auctionDwr创建成名为am的对象 -->
+            <param name="beanName" value="auctionDwr"/>
+            <!-- 使用include元素定义哪些方法将被暴露到客户端 -->
+            <include method="getItemByWiner"/>
+            <include method="getFailItems"/>
+            <include method="validLogin"/>
+            <include method="getBidByUser"/>
+            <include method="getItemsByOwner"/>
+            <include method="getAllKind"/>
+            <include method="addItem"/>
+            <include method="addKind"/>
+            <include method="getItemsByKind"/>
+            <include method="getKind"/>
+            <include method="getItem"/>
+            <include method="addBid"/>
+            <include method="getKind"/>
+        </create>
+        <!-- 定义使用Bean转换器处理如下Java类 -->
+        <convert converter="bean"
+                 match="org.cbpmc.auction.business.BidBean"/>
+        <convert converter="bean"
+                 match="org.cbpmc.auction.business.ItemBean"/>
+        <convert converter="bean"
+                 match="org.cbpmc.auction.business.KindBean"/>
+        <convert converter="bean"
+                 match="org.cbpmc.auction.exception.AuctionException"/>
+
+    </allow>
 </dwr>
 

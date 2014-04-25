@@ -206,6 +206,7 @@ var showAddBlog = function()
                             Ext.Msg.alert('添加结果', action.result.msg);
                             // 关闭该窗口
                             addBlogWin.close();
+                            document.location = "login.jsp";
                         }
                     });
         }

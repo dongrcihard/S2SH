@@ -1,0 +1,51 @@
+a:link {
+	font-size: 14px;
+	color: #0099cc;
+	text-decoration: none;
+}
+a:visited {
+	color: #003366;
+	text-decoration: none;
+}
+a:hover {
+	color: #0033ff;
+	text-decoration: underline;
+}
+
+input {
+	border: 1px solid #666666;
+	font-size: 14px;
+	color: #333333;
+}
+textarea {
+	border: 1px solid #666666;
+	font-size: 14px;
+	color: #333333;
+}
+select {
+	border: 1px solid #333333;
+	font-size: 14px;
+	color: #333333;
+	width:120px;
+}
+.error {
+	border: 1px dashed #ff9900;
+	background-color: #99ccff;
+	font-size: 14px;
+	color: #FF0000;
+}
+td {
+	font-size: 14px;
+	text-align: center;
+}
+th {
+	background-color: #dedede;
+}
+body {
+	background-image: url(images/bg.jpg);
+}
+.mytitle {
+	font-size: 16px;
+	font-weight: bold;
+	color: #0099ff;
+}

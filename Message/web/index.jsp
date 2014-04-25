@@ -27,9 +27,9 @@
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-		<input type="button" id="hider0" 
+		<input type="button" id="hider0"
 			value="登录" onclick="userLogin();" />
-		<input type="button" id="hider1" 
+		<input type="button" id="hider1"
 			value="注册" onclick="userRegist();" />
 		</td>
 	</tr>
@@ -52,7 +52,7 @@
 	<td colspan="2" align="center">
 		<input type="button" id="hider2" value="发布"
 			onclick="addMsg();"/>
-		<input type="button" id="hider3" value="取消" 
+		<input type="button" id="hider3" value="取消"
 			onclick="$('post').style.display='none';"/>
 	</td>
 	</tr>
@@ -64,7 +64,7 @@
 	<caption>查看消息</caption>
 	<tr>
 		<td>标题：</td>
-		<td><input id="viewTitle" type="text" 
+		<td><input id="viewTitle" type="text"
 			disabled="disabled"/></td>
 	</tr>
 	<tr>
@@ -79,7 +79,7 @@
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-		<input type="button" id="hider4" value="关闭" 
+		<input type="button" id="hider4" value="关闭"
 			onclick="$('view').style.display='none';"/>
 		</td>
 	</tr>
@@ -97,7 +97,7 @@
 		<th width="120">作者</th>
 		<th >消息标题</th>
 	</tr></tbody>
-<tbody id="show">  
+<tbody id="show">
 	<tr>
 		<td width="120">&nbsp;</td>
 		<td >&nbsp;</td>
@@ -109,8 +109,15 @@
 		<td align="right">
 		<a href="#" onclick="prePage();return false;">上一页</a>
 		<a href="#" onclick="nextPage();return false;">下一页</a>
-	</td>
+	    </td>
 	</tr>
+</table>
+<table width="600" border="1" align="center">
+    <tr>
+        <td align="center">
+            <a href="blog.jsp">Blog System.</a>
+        </td>
+    </tr>
 </table>
 <hr />
 <div align="center">

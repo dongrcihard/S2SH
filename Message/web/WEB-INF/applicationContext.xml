@@ -24,7 +24,7 @@
           p:maxPoolSize="200"
           p:minPoolSize="2"
           p:initialPoolSize="2"
-          p:maxIdleTime="200"/>
+          p:maxIdleTime="2000"/>
 
     <!-- 定义Hibernate的SessionFactory -->
     <bean id="sessionFactory"
@@ -38,6 +38,15 @@
                 <value>org/cbpmc/message/domain/Message.hbm.xml</value>
                 <value>org/cbpmc/blog/domain/Blog.hbm.xml</value>
                 <value>org/cbpmc/blog/domain/Comment.hbm.xml</value>
+            </list>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>org.cbpmc.auction.domain.AuctionUser</value>
+                <value>org.cbpmc.auction.domain.Bid</value>
+                <value>org.cbpmc.auction.domain.Item</value>
+                <value>org.cbpmc.auction.domain.Kind</value>
+                <value>org.cbpmc.auction.domain.State</value>
             </list>
         </property>
         <!-- 定义Hibernate的SessionFactory的属性 -->
@@ -56,6 +65,8 @@
             </props>
         </property>
     </bean>
+
+
     <!-- 定义userDao组件
         为userDao组件注入SessionFactory实例 -->
     <bean id="userDao"
@@ -73,9 +84,13 @@
           p:userDao-ref="userDao"
           p:messDao-ref="messsageDao"/>
 
+
+    <!--配置struts2中的Action-->
     <bean id="loginAction" class="org.cbpmc.login.test.UserAction"
           p:myService-ref="messageService"/>
 
+
+    <!--配置Blog中的Dao-->
     <bean id="blogDao" class="org.cbpmc.blog.dao.impl.BlogDaoHibernate"
           p:sessionFactory-ref="sessionFactory"/>
     <bean id="commentDao" class="org.cbpmc.blog.dao.impl.CommentDaoHibernate"
@@ -84,12 +99,84 @@
           p:blogDao-ref="blogDao"
           p:commentDao-ref="commentDao"/>
 
+
     <!-- 配置Hibernate的局部事务管理器，使用HibernateTransactionManager类 -->
     <!-- 该类实现PlatformTransactionManager接口，是针对Hibernate的特定实现-->
     <!-- 配置HibernateTransactionManager时需要依注入SessionFactory的引用 -->
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate4.HibernateTransactionManager"
           p:sessionFactory-ref="sessionFactory"/>
+
+
+    <!--配置邮箱信息，包括SMTP服务器地址-->
+    <bean id="mailSender"
+          class="org.springframework.mail.javamail.JavaMailSenderImpl"
+          p:host="smtp.126.com"
+          p:username="dongxueliang123"
+          p:password="d198233">
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.timeout">25000</prop>
+            </props>
+        </property>
+    </bean>
+    <!--配置邮件信息-->
+    <bean id="mailMessage"
+          class="org.springframework.mail.SimpleMailMessage"
+          p:from="dongxueliang123@126.com"
+          p:subject="竞价通知"/>
+
+
+    <!-- 配置业务逻辑组件 -->
+    <!-- 为业务逻辑组件注入所需的DAO组件 -->
+    <bean id="auctionService"
+          class="org.cbpmc.auction.service.impl.AuctionServiceImpl"
+          p:userDao-ref="auctionUserDao"
+          p:bidDao-ref="bidDao"
+          p:itemDao-ref="itemDao"
+          p:kindDao-ref="kindDao"
+          p:stateDao-ref="stateDao"
+          p:mailSender-ref="mailSender"
+          p:message-ref="mailMessage"/>
+
+
+    <!-- 配置DWR的前端处理组件
+    为前端处理组件注入业务逻辑组件 -->
+    <bean id="messageDwr"
+          class="org.cbpmc.message.dwr.MessageDwr"
+          p:messageService-ref="messageService"/>
+    <!-- 配置一个DWR的前端处理Bean,
+    依赖注入业务逻辑组件-->
+    <bean id="auctionDwr"
+          class="org.cbpmc.auction.dwr.AuctionDwr"
+          p:auctionService-ref="auctionService"/>
+
+
+    <!-- 配置一个TimerTask Bean,
+    依赖注入业务逻辑组件-->
+    <bean id="checkWiner" class="org.cbpmc.auction.schedule.CheckWiner"
+          p:mgr-ref="auctionService"/>
+    <!-- 将TimerTask Bean：checkWiner包装成可周期性执行的任务调度Bean
+    并指定调度频率和延迟 -->
+    <bean id="scheduledTask"
+          class="org.springframework.scheduling.timer.ScheduledTimerTask"
+          p:delay="0"
+          p:period="86400000"
+          p:timerTask-ref="checkWiner"/>
+    <bean id="timerFactory"
+          class="org.springframework.scheduling.timer.TimerFactoryBean">
+        <property name="scheduledTimerTasks">
+            <list>
+                <ref bean="scheduledTask"/>
+            </list>
+        </property>
+    </bean>
+
+
+    <!-- 定义一个普通Bean实例，该Bean实例将进行权限控制 -->
+    <bean id="authority"
+          class="org.cbpmc.message.authority.AuthorityInterceptor"/>
     <!--在Spring容器中注册Bean-->
     <!-- 配置事务切面Bean,指定事务管理器 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
@@ -109,20 +196,25 @@
         <aop:advisor advice-ref="txAdvice"
                      pointcut-ref="leeService"/>
         <!-- 将authority转换成切面Bean -->
-        <!--	<aop:aspect ref="authority">
-                &lt;!&ndash; 定义一个Before增强处理，直接指定切入点表达式
-                    以切面Bean中的authority()方法作为增强处理方法 &ndash;&gt;
-                <aop:before pointcut=
-                    "execution(* org.cbpmc.auction.dwr.*.*Message*(..))"
-                    method="authority"/>
-            </aop:aspect>-->
+        <aop:aspect id="authorityMsg" ref="authority">
+            <!-- 定义一个Before增强处理，直接指定切入点表达式
+                以切面Bean中的authority()方法作为增强处理方法 -->
+            <aop:before pointcut=
+                "execution(* org.cbpmc.message.dwr.*.*Message*(..))"
+                method="authority"/>
+        </aop:aspect>
+        <!-- 将authority转换成切面Bean
+            切面Bean的新名称为：authorityAspect -->
+        <aop:aspect id="authorityAspect" ref="authority">
+            <!-- 定义一个Before增强处理，直接指定切入点表达式
+                以切面Bean中的authority()方法作为增强处理方法 -->
+            <aop:before pointcut=
+                "execution(* org.cbpmc.auction.dwr.*.getItemByWiner(..))
+                or execution(* org.cbpmc.auction.dwr.*.getBidByUser(..))
+                or execution(* org.cbpmc.auction.dwr.*.getItemsByOwner(..))
+                or execution(* org.cbpmc.auction.dwr.*.addItem(..))
+                or execution(* org.cbpmc.auction.dwr.*.addBid(..))"
+                method="authority"/>
+        </aop:aspect>
     </aop:config>
-    <!-- 配置DWR的前端处理组件
-        为前端处理组件注入业务逻辑组件 -->
-    <bean id="messageDwr"
-          class="org.cbpmc.message.dwr.MessageDwr"
-          p:messageService-ref="messageService"/>
-    <!-- 定义一个普通Bean实例，该Bean实例将进行权限控制 -->
-    <!--	<bean id="authority"
-            class="org.cbpmc.message.authority.AuthorityInterceptor"/>-->
 </beans>
