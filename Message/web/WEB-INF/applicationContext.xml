@@ -196,13 +196,13 @@
         <aop:advisor advice-ref="txAdvice"
                      pointcut-ref="leeService"/>
         <!-- 将authority转换成切面Bean -->
-        <aop:aspect id="authorityMsg" ref="authority">
-            <!-- 定义一个Before增强处理，直接指定切入点表达式
-                以切面Bean中的authority()方法作为增强处理方法 -->
-            <aop:before pointcut=
-                "execution(* org.cbpmc.message.dwr.*.*Message*(..))"
-                method="authority"/>
-        </aop:aspect>
+        <!--<aop:aspect id="authorityMsg" ref="authority">-->
+            <!--&lt;!&ndash; 定义一个Before增强处理，直接指定切入点表达式-->
+                <!--以切面Bean中的authority()方法作为增强处理方法 &ndash;&gt;-->
+            <!--<aop:before pointcut=-->
+                <!--"execution(* org.cbpmc.message.dwr.*.*Message*(..))"-->
+                <!--method="authority"/>-->
+        <!--</aop:aspect>-->
         <!-- 将authority转换成切面Bean
             切面Bean的新名称为：authorityAspect -->
         <aop:aspect id="authorityAspect" ref="authority">
