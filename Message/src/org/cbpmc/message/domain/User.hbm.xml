@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="GBK"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping
 	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- HibernateÓ³ÉäÎÄ¼þµÄ¸ùÔªËØ -->
+<!-- Hibernateæ˜ å°„æ–‡ä»¶çš„æ ¹å…ƒç´  -->
 <hibernate-mapping package="org.cbpmc.message.domain">
-	<!-- Ã¿¸öclassÔªËØÓ³ÉäÒ»¸ö³Ö¾Ã»¯Àà -->
+	<!-- æ¯ä¸ªclasså…ƒç´ æ˜ å°„ä¸€ä¸ªæŒä¹…åŒ–ç±» -->
 	<class name="User" table="user_inf">
-		<!-- Ó³Éä±êÊ¶ÊôÐÔ -->
+		<!-- æ˜ å°„æ ‡è¯†å±žæ€§ -->
 		<id name="id" type="int" column="user_id">
 			<generator class="identity"/>
 		</id>
-		<!-- Ó³ÉänameÆÕÍ¨ÊôÐÔ -->
+		<!-- æ˜ å°„nameæ™®é€šå±žæ€§ -->
 		<property name="name" unique="true" type="string"/>
 		<property name="pass" type="string"/>
-		<!-- Ó³Éä1-N¹ØÁª -->
+		<!-- æ˜ å°„1-Nå…³è” -->
 		<set name="messages" inverse="true">
 			<key column="owner_id"/>
 			<one-to-many class="Message"/>

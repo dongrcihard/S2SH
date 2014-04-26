@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="GBK"?>
-<!-- Ö¸¶¨DWRÅäÖÃÎÄ¼þµÄDTDµÈÐÅÏ¢ -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- æŒ‡å®šDWRé…ç½®æ–‡ä»¶çš„DTDç­‰ä¿¡æ¯ -->
 <!DOCTYPE dwr PUBLIC 
 	"-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN"
 	"http://getahead.org/dwr/dwr30.dtd">
 <dwr>
 	<allow>
-		<!-- Ê¹ÓÃspring´´½¨Æ÷£¬´´½¨Ò»¸öÃûÎªmmµÄJavaScript¶ÔÏó -->
+		<!-- ä½¿ç”¨springåˆ›å»ºå™¨ï¼Œåˆ›å»ºä¸€ä¸ªåä¸ºmmçš„JavaScriptå¯¹è±¡ -->
 		<create creator="spring" javascript="ms">
-			<!-- ½«SpringÈÝÆ÷ÖÐµÄmessManager´´½¨³ÉÃûÎªmmµÄ¶ÔÏó -->
+			<!-- å°†Springå®¹å™¨ä¸­çš„messManageråˆ›å»ºæˆåä¸ºmmçš„å¯¹è±¡ -->
 			<param name="beanName" value="messageDwr"/>
-			<!-- Ê¹ÓÃincludeÔªËØ¶¨ÒåÄÄÐ©·½·¨½«±»±©Â¶µ½¿Í»§¶Ë -->
+			<!-- ä½¿ç”¨includeå…ƒç´ å®šä¹‰å“ªäº›æ–¹æ³•å°†è¢«æš´éœ²åˆ°å®¢æˆ·ç«¯ -->
 			<include method="createMessage"/>
 			<include method="createUser"/>
 			<include method="validateName"/>
@@ -18,18 +18,18 @@
 			<include method="getMessage"/>
 			<include method="getAllMessageByPage"/>
 		</create>
-		<!-- ¶¨ÒåDWR½«MessageBeanÊµÀý×ª»»³ÉJavaScript¶ÔÏó -->
+		<!-- å®šä¹‰DWRå°†MessageBeanå®žä¾‹è½¬æ¢æˆJavaScriptå¯¹è±¡ -->
 		<convert converter="bean"
 			match="org.cbpmc.message.vo.MessageBean"/>
-		<!-- ¶¨ÒåDWR½«MessageExceptionÊµÀý×ª»»³ÉJavaScript¶ÔÏó -->
+		<!-- å®šä¹‰DWRå°†MessageExceptionå®žä¾‹è½¬æ¢æˆJavaScriptå¯¹è±¡ -->
 		<convert converter="bean" 
 			match="org.cbpmc.message.exception.MessageException"/>
 
-        <!-- Ê¹ÓÃspring´´½¨Æ÷£¬´´½¨Ò»¸öÃûÎªamµÄJavaScript¶ÔÏó -->
+        <!-- ä½¿ç”¨springåˆ›å»ºå™¨ï¼Œåˆ›å»ºä¸€ä¸ªåä¸ºamçš„JavaScriptå¯¹è±¡ -->
         <create creator="spring" javascript="am">
-            <!-- ½«SpringÈÝÆ÷ÖÐµÄauctionDwr´´½¨³ÉÃûÎªamµÄ¶ÔÏó -->
+            <!-- å°†Springå®¹å™¨ä¸­çš„auctionDwråˆ›å»ºæˆåä¸ºamçš„å¯¹è±¡ -->
             <param name="beanName" value="auctionDwr"/>
-            <!-- Ê¹ÓÃincludeÔªËØ¶¨ÒåÄÄÐ©·½·¨½«±»±©Â¶µ½¿Í»§¶Ë -->
+            <!-- ä½¿ç”¨includeå…ƒç´ å®šä¹‰å“ªäº›æ–¹æ³•å°†è¢«æš´éœ²åˆ°å®¢æˆ·ç«¯ -->
             <include method="getItemByWiner"/>
             <include method="getFailItems"/>
             <include method="validLogin"/>
@@ -44,7 +44,7 @@
             <include method="addBid"/>
             <include method="getKind"/>
         </create>
-        <!-- ¶¨ÒåÊ¹ÓÃBean×ª»»Æ÷´¦ÀíÈçÏÂJavaÀà -->
+        <!-- å®šä¹‰ä½¿ç”¨Beanè½¬æ¢å™¨å¤„ç†å¦‚ä¸‹Javaç±» -->
         <convert converter="bean"
                  match="org.cbpmc.auction.business.BidBean"/>
         <convert converter="bean"

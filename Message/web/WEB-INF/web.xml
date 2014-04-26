@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="GBK"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
@@ -20,30 +20,30 @@
 
     <filter>
         <filter-name>struts2</filter-name>
-        <!--Ö¸¶¨FilterµÄÊµÏÖÀà£¬´Ë´¦Ê¹ÓÃµÄÊÇStruts2Ìá¹©µÄÀ¹½ØÆ÷Àà-->
+        <!--æŒ‡å®šFilterçš„å®žçŽ°ç±»ï¼Œæ­¤å¤„ä½¿ç”¨çš„æ˜¯Struts2æä¾›çš„æ‹¦æˆªå™¨ç±»-->
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>struts2</filter-name>	<!--FilterµÄÃû×Ö£¬¸ÃÃû×Ö±ØÐëÊÇfilterÔªËØÖÐÒÑÉùÃ÷¹ýµÄ¹ýÂËÆ÷Ãû×Ö-->
-        <url-pattern>*.action</url-pattern>		<!--¶¨ÒåFilter¸ºÔðÀ¹½ØµÄURLµØÖ·-->
+        <filter-name>struts2</filter-name>	<!--Filterçš„åå­—ï¼Œè¯¥åå­—å¿…é¡»æ˜¯filterå…ƒç´ ä¸­å·²å£°æ˜Žè¿‡çš„è¿‡æ»¤å™¨åå­—-->
+        <url-pattern>*.action</url-pattern>		<!--å®šä¹‰Filterè´Ÿè´£æ‹¦æˆªçš„URLåœ°å€-->
     </filter-mapping>
 
-    <!-- ÅäÖÃDWRµÄºËÐÄServlet -->
+    <!-- é…ç½®DWRçš„æ ¸å¿ƒServlet -->
     <servlet>
-		<!-- Ö¸¶¨DWRºËÐÄServletµÄÃû×Ö -->
+		<!-- æŒ‡å®šDWRæ ¸å¿ƒServletçš„åå­— -->
 		<servlet-name>dwr-invoker</servlet-name>
-		<!-- Ö¸¶¨DWRºËÐÄServletµÄÊµÏÖÀà -->
+		<!-- æŒ‡å®šDWRæ ¸å¿ƒServletçš„å®žçŽ°ç±» -->
 		<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
-		<!--  Ö¸¶¨DWRºËÐÄServlet´¦ÓÚµ÷ÊÔ×´Ì¬ -->
+		<!--  æŒ‡å®šDWRæ ¸å¿ƒServletå¤„äºŽè°ƒè¯•çŠ¶æ€ -->
 		<init-param>
 			<param-name>debug</param-name>
 			<param-value>true</param-value>
 		</init-param>
 	</servlet>
-    <!-- Ö¸¶¨ºËÐÄServletµÄURLÓ³Éä -->
+    <!-- æŒ‡å®šæ ¸å¿ƒServletçš„URLæ˜ å°„ -->
     <servlet-mapping>
 		<servlet-name>dwr-invoker</servlet-name>
-		<!-- Ö¸¶¨ºËÐÄServletÓ³ÉäµÄURL -->
+		<!-- æŒ‡å®šæ ¸å¿ƒServletæ˜ å°„çš„URL -->
 		<url-pattern>/leedwr/*</url-pattern>
 	</servlet-mapping>
 

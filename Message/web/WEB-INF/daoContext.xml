@@ -1,27 +1,27 @@
-<?xml version="1.0" encoding="GBK"?>
-<!-- Spring配置文件的根元素，并指定Schema信息 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Spring閰嶇疆鏂囦欢鐨勬牴鍏冪礌锛屽苟鎸囧畾Schema淇℃伅 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
-    <!-- 配置daoTemplate，作为所有DAO组件的模板 -->
-    <!-- 为DAO组件注入SessionFactory引用 -->
+    <!-- 閰嶇疆daoTemplate锛屼綔涓烘墍鏈塂AO缁勪欢鐨勬ā鏉� -->
+    <!-- 涓篋AO缁勪欢娉ㄥ叆SessionFactory寮曠敤 -->
     <bean id="daoTemplate" abstract="true">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    <!-- 配置stateDao组件 -->
+    <!-- 閰嶇疆stateDao缁勪欢 -->
     <bean id="stateDao" parent="daoTemplate"
           class="org.cbpmc.auction.dao.impl.StateDaoHibernate"/>
-    <!-- 配置kindDao组件 -->
+    <!-- 閰嶇疆kindDao缁勪欢 -->
     <bean id="kindDao" parent="daoTemplate"
           class="org.cbpmc.auction.dao.impl.KindDaoHibernate"/>
-    <!-- 配置auctionDao组件 -->
+    <!-- 閰嶇疆auctionDao缁勪欢 -->
     <bean id="auctionUserDao" parent="daoTemplate"
           class="org.cbpmc.auction.dao.impl.AuctionUserDaoHibernate"/>
-    <!-- 配置bidDao组件 -->
+    <!-- 閰嶇疆bidDao缁勪欢 -->
     <bean id="bidDao" parent="daoTemplate"
           class="org.cbpmc.auction.dao.impl.BidDaoHibernate"/>
-    <!-- 配置itemDao组件 -->
+    <!-- 閰嶇疆itemDao缁勪欢 -->
     <bean id="itemDao" parent="daoTemplate"
           class="org.cbpmc.auction.dao.impl.ItemDaoHibernate"/>
 </beans>

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="GBK"?>
-<!-- Ö¸¶¨SpringÅäÖÃÎÄ¼þµÄSchemaÐÅÏ¢ -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- æŒ‡å®šSpringé…ç½®æ–‡ä»¶çš„Schemaä¿¡æ¯ -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:aop="http://www.springframework.org/schema/aop"
@@ -12,9 +12,9 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
-    <!-- ¶¨ÒåÊý¾ÝÔ´Bean£¬Ê¹ÓÃC3P0Êý¾ÝÔ´ÊµÏÖ
-        ²¢Í¨¹ýÒÀÀµ×¢ÈëÉèÖÃÊý¾Ý¿âµÄÇý¶¯¡¢URL¡¢ÓÃ»§Ãû¡¢ÃÜÂë
-        ×î´óÁ¬½ÓÊý¡¢×îÐ¡Á¬½ÓÊý¡¢³õÊ¼»¯Á¬½ÓÊý¡¢×î´ó¿ÕÏÐÊ±¼ä -->
+    <!-- å®šä¹‰æ•°æ®æºBeanï¼Œä½¿ç”¨C3P0æ•°æ®æºå®žçŽ°
+        å¹¶é€šè¿‡ä¾èµ–æ³¨å…¥è®¾ç½®æ•°æ®åº“çš„é©±åŠ¨ã€URLã€ç”¨æˆ·åã€å¯†ç 
+        æœ€å¤§è¿žæŽ¥æ•°ã€æœ€å°è¿žæŽ¥æ•°ã€åˆå§‹åŒ–è¿žæŽ¥æ•°ã€æœ€å¤§ç©ºé—²æ—¶é—´ -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close"
           p:driverClass="com.mysql.jdbc.Driver"
@@ -26,14 +26,14 @@
           p:initialPoolSize="2"
           p:maxIdleTime="2000"/>
 
-    <!-- ¶¨ÒåHibernateµÄSessionFactory -->
+    <!-- å®šä¹‰Hibernateçš„SessionFactory -->
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
           p:dataSource-ref="dataSource">
-        <!-- mappingResoucesÊôÐÔÓÃÀ´ÁÐ³öÈ«²¿Ó³ÉäÎÄ¼þ -->
+        <!-- mappingResouceså±žæ€§ç”¨æ¥åˆ—å‡ºå…¨éƒ¨æ˜ å°„æ–‡ä»¶ -->
         <property name="mappingResources">
             <list>
-                <!-- ÒÔÏÂÓÃÀ´ÁÐ³öHibernateÓ³ÉäÎÄ¼þ -->
+                <!-- ä»¥ä¸‹ç”¨æ¥åˆ—å‡ºHibernateæ˜ å°„æ–‡ä»¶ -->
                 <value>org/cbpmc/message/domain/User.hbm.xml</value>
                 <value>org/cbpmc/message/domain/Message.hbm.xml</value>
                 <value>org/cbpmc/blog/domain/Blog.hbm.xml</value>
@@ -49,48 +49,48 @@
                 <value>org.cbpmc.auction.domain.State</value>
             </list>
         </property>
-        <!-- ¶¨ÒåHibernateµÄSessionFactoryµÄÊôÐÔ -->
+        <!-- å®šä¹‰Hibernateçš„SessionFactoryçš„å±žæ€§ -->
         <property name="hibernateProperties">
             <props>
-                <!-- Ö¸¶¨Êý¾Ý¿â·½ÑÔ -->
+                <!-- æŒ‡å®šæ•°æ®åº“æ–¹è¨€ -->
                 <prop key="hibernate.dialect">
                     org.hibernate.dialect.MySQLDialect
                 </prop>
-                <!-- ÊÇ·ñ¸ù¾ÝÐèÒªÃ¿´Î×Ô¶¯´´½¨Êý¾Ý¿â -->
+                <!-- æ˜¯å¦æ ¹æ®éœ€è¦æ¯æ¬¡è‡ªåŠ¨åˆ›å»ºæ•°æ®åº“ -->
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <!-- ÏÔÊ¾Hibernate³Ö¾Ã»¯²Ù×÷ËùÉú³ÉµÄSQL -->
+                <!-- æ˜¾ç¤ºHibernateæŒä¹…åŒ–æ“ä½œæ‰€ç”Ÿæˆçš„SQL -->
                 <prop key="hibernate.show_sql">true</prop>
-                <!-- ½«SQL½Å±¾½øÐÐ¸ñÊ½»¯ºóÔÙÊä³ö -->
+                <!-- å°†SQLè„šæœ¬è¿›è¡Œæ ¼å¼åŒ–åŽå†è¾“å‡º -->
                 <prop key="hibernate.format_sql">true</prop>
             </props>
         </property>
     </bean>
 
 
-    <!-- ¶¨ÒåuserDao×é¼þ
-        ÎªuserDao×é¼þ×¢ÈëSessionFactoryÊµÀý -->
+    <!-- å®šä¹‰userDaoç»„ä»¶
+        ä¸ºuserDaoç»„ä»¶æ³¨å…¥SessionFactoryå®žä¾‹ -->
     <bean id="userDao"
           class="org.cbpmc.message.dao.impl.UserDaoHibernate"
           p:sessionFactory-ref="sessionFactory"/>
-    <!-- ¶¨ÒåmesssageDao×é¼þ
-        ÎªuserDao×é¼þ×¢ÈëSessionFactoryÊµÀý -->
+    <!-- å®šä¹‰messsageDaoç»„ä»¶
+        ä¸ºuserDaoç»„ä»¶æ³¨å…¥SessionFactoryå®žä¾‹ -->
     <bean id="messsageDao"
           class="org.cbpmc.message.dao.impl.MessageDaoHibernate"
           p:sessionFactory-ref="sessionFactory"/>
-    <!-- ÅäÖÃmessServiceÒµÎñÂß¼­×é¼þ
-        ÎªÒµÎñÂß¼­×é¼þ×¢ÈëDAO×é¼þ -->
+    <!-- é…ç½®messServiceä¸šåŠ¡é€»è¾‘ç»„ä»¶
+        ä¸ºä¸šåŠ¡é€»è¾‘ç»„ä»¶æ³¨å…¥DAOç»„ä»¶ -->
     <bean id="messageService"
           class="org.cbpmc.message.service.impl.MessageServiceImpl"
           p:userDao-ref="userDao"
           p:messDao-ref="messsageDao"/>
 
 
-    <!--ÅäÖÃstruts2ÖÐµÄAction-->
+    <!--é…ç½®struts2ä¸­çš„Action-->
     <bean id="loginAction" class="org.cbpmc.login.test.UserAction"
           p:myService-ref="messageService"/>
 
 
-    <!--ÅäÖÃBlogÖÐµÄDao-->
+    <!--é…ç½®Blogä¸­çš„Dao-->
     <bean id="blogDao" class="org.cbpmc.blog.dao.impl.BlogDaoHibernate"
           p:sessionFactory-ref="sessionFactory"/>
     <bean id="commentDao" class="org.cbpmc.blog.dao.impl.CommentDaoHibernate"
@@ -100,15 +100,15 @@
           p:commentDao-ref="commentDao"/>
 
 
-    <!-- ÅäÖÃHibernateµÄ¾Ö²¿ÊÂÎñ¹ÜÀíÆ÷£¬Ê¹ÓÃHibernateTransactionManagerÀà -->
-    <!-- ¸ÃÀàÊµÏÖPlatformTransactionManager½Ó¿Ú£¬ÊÇÕë¶ÔHibernateµÄÌØ¶¨ÊµÏÖ-->
-    <!-- ÅäÖÃHibernateTransactionManagerÊ±ÐèÒªÒÀ×¢ÈëSessionFactoryµÄÒýÓÃ -->
+    <!-- é…ç½®Hibernateçš„å±€éƒ¨äº‹åŠ¡ç®¡ç†å™¨ï¼Œä½¿ç”¨HibernateTransactionManagerç±» -->
+    <!-- è¯¥ç±»å®žçŽ°PlatformTransactionManageræŽ¥å£ï¼Œæ˜¯é’ˆå¯¹Hibernateçš„ç‰¹å®šå®žçŽ°-->
+    <!-- é…ç½®HibernateTransactionManageræ—¶éœ€è¦ä¾æ³¨å…¥SessionFactoryçš„å¼•ç”¨ -->
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate4.HibernateTransactionManager"
           p:sessionFactory-ref="sessionFactory"/>
 
 
-    <!--ÅäÖÃÓÊÏäÐÅÏ¢£¬°üÀ¨SMTP·þÎñÆ÷µØÖ·-->
+    <!--é…ç½®é‚®ç®±ä¿¡æ¯ï¼ŒåŒ…æ‹¬SMTPæœåŠ¡å™¨åœ°å€-->
     <bean id="mailSender"
           class="org.springframework.mail.javamail.JavaMailSenderImpl"
           p:host="smtp.126.com"
@@ -121,15 +121,15 @@
             </props>
         </property>
     </bean>
-    <!--ÅäÖÃÓÊ¼þÐÅÏ¢-->
+    <!--é…ç½®é‚®ä»¶ä¿¡æ¯-->
     <bean id="mailMessage"
           class="org.springframework.mail.SimpleMailMessage"
           p:from="dongxueliang123@126.com"
-          p:subject="¾º¼ÛÍ¨Öª"/>
+          p:subject="ç«žä»·é€šçŸ¥"/>
 
 
-    <!-- ÅäÖÃÒµÎñÂß¼­×é¼þ -->
-    <!-- ÎªÒµÎñÂß¼­×é¼þ×¢ÈëËùÐèµÄDAO×é¼þ -->
+    <!-- é…ç½®ä¸šåŠ¡é€»è¾‘ç»„ä»¶ -->
+    <!-- ä¸ºä¸šåŠ¡é€»è¾‘ç»„ä»¶æ³¨å…¥æ‰€éœ€çš„DAOç»„ä»¶ -->
     <bean id="auctionService"
           class="org.cbpmc.auction.service.impl.AuctionServiceImpl"
           p:userDao-ref="auctionUserDao"
@@ -141,24 +141,24 @@
           p:message-ref="mailMessage"/>
 
 
-    <!-- ÅäÖÃDWRµÄÇ°¶Ë´¦Àí×é¼þ
-    ÎªÇ°¶Ë´¦Àí×é¼þ×¢ÈëÒµÎñÂß¼­×é¼þ -->
+    <!-- é…ç½®DWRçš„å‰ç«¯å¤„ç†ç»„ä»¶
+    ä¸ºå‰ç«¯å¤„ç†ç»„ä»¶æ³¨å…¥ä¸šåŠ¡é€»è¾‘ç»„ä»¶ -->
     <bean id="messageDwr"
           class="org.cbpmc.message.dwr.MessageDwr"
           p:messageService-ref="messageService"/>
-    <!-- ÅäÖÃÒ»¸öDWRµÄÇ°¶Ë´¦ÀíBean,
-    ÒÀÀµ×¢ÈëÒµÎñÂß¼­×é¼þ-->
+    <!-- é…ç½®ä¸€ä¸ªDWRçš„å‰ç«¯å¤„ç†Bean,
+    ä¾èµ–æ³¨å…¥ä¸šåŠ¡é€»è¾‘ç»„ä»¶-->
     <bean id="auctionDwr"
           class="org.cbpmc.auction.dwr.AuctionDwr"
           p:auctionService-ref="auctionService"/>
 
 
-    <!-- ÅäÖÃÒ»¸öTimerTask Bean,
-    ÒÀÀµ×¢ÈëÒµÎñÂß¼­×é¼þ-->
+    <!-- é…ç½®ä¸€ä¸ªTimerTask Bean,
+    ä¾èµ–æ³¨å…¥ä¸šåŠ¡é€»è¾‘ç»„ä»¶-->
     <bean id="checkWiner" class="org.cbpmc.auction.schedule.CheckWiner"
           p:mgr-ref="auctionService"/>
-    <!-- ½«TimerTask Bean£ºcheckWiner°ü×°³É¿ÉÖÜÆÚÐÔÖ´ÐÐµÄÈÎÎñµ÷¶ÈBean
-    ²¢Ö¸¶¨µ÷¶ÈÆµÂÊºÍÑÓ³Ù -->
+    <!-- å°†TimerTask Beanï¼šcheckWineråŒ…è£…æˆå¯å‘¨æœŸæ€§æ‰§è¡Œçš„ä»»åŠ¡è°ƒåº¦Bean
+    å¹¶æŒ‡å®šè°ƒåº¦é¢‘çŽ‡å’Œå»¶è¿Ÿ -->
     <bean id="scheduledTask"
           class="org.springframework.scheduling.timer.ScheduledTimerTask"
           p:delay="0"
@@ -174,40 +174,40 @@
     </bean>
 
 
-    <!-- ¶¨ÒåÒ»¸öÆÕÍ¨BeanÊµÀý£¬¸ÃBeanÊµÀý½«½øÐÐÈ¨ÏÞ¿ØÖÆ -->
+    <!-- å®šä¹‰ä¸€ä¸ªæ™®é€šBeanå®žä¾‹ï¼Œè¯¥Beanå®žä¾‹å°†è¿›è¡Œæƒé™æŽ§åˆ¶ -->
     <bean id="authority"
           class="org.cbpmc.message.authority.AuthorityInterceptor"/>
-    <!--ÔÚSpringÈÝÆ÷ÖÐ×¢²áBean-->
-    <!-- ÅäÖÃÊÂÎñÇÐÃæBean,Ö¸¶¨ÊÂÎñ¹ÜÀíÆ÷ -->
+    <!--åœ¨Springå®¹å™¨ä¸­æ³¨å†ŒBean-->
+    <!-- é…ç½®äº‹åŠ¡åˆ‡é¢Bean,æŒ‡å®šäº‹åŠ¡ç®¡ç†å™¨ -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        <!-- ÓÃÓÚÅäÖÃÏêÏ¸µÄÊÂÎñÓïÒå -->
+        <!-- ç”¨äºŽé…ç½®è¯¦ç»†çš„äº‹åŠ¡è¯­ä¹‰ -->
         <tx:attributes>
-            <!-- ËùÓÐÒÔ'get'¿ªÍ·µÄ·½·¨ÊÇread-onlyµÄ -->
+            <!-- æ‰€æœ‰ä»¥'get'å¼€å¤´çš„æ–¹æ³•æ˜¯read-onlyçš„ -->
             <tx:method name="get*" read-only="true"/>
-            <!-- ÆäËû·½·¨Ê¹ÓÃÄ¬ÈÏµÄÊÂÎñÉèÖÃ -->
+            <!-- å…¶ä»–æ–¹æ³•ä½¿ç”¨é»˜è®¤çš„äº‹åŠ¡è®¾ç½® -->
             <tx:method name="*"/>
         </tx:attributes>
     </tx:advice>
     <aop:config>
-        <!-- ÅäÖÃÒ»¸öÇÐÈëµã£¬Æ¥ÅäÖ¸¶¨°üÏÂËùÓÐÒÔImpl½áÎ²µÄÀàÖ´ÐÐµÄËùÓÐ·½·¨ -->
+        <!-- é…ç½®ä¸€ä¸ªåˆ‡å…¥ç‚¹ï¼ŒåŒ¹é…æŒ‡å®šåŒ…ä¸‹æ‰€æœ‰ä»¥Implç»“å°¾çš„ç±»æ‰§è¡Œçš„æ‰€æœ‰æ–¹æ³• -->
         <aop:pointcut id="leeService"
                       expression="execution(* org.cbpmc.*.service.impl.*Impl.*(..))"/>
-        <!-- Ö¸¶¨ÔÚleeServiceÇÐÈëµãÓ¦ÓÃtxAdviceÊÂÎñÇÐÃæ -->
+        <!-- æŒ‡å®šåœ¨leeServiceåˆ‡å…¥ç‚¹åº”ç”¨txAdviceäº‹åŠ¡åˆ‡é¢ -->
         <aop:advisor advice-ref="txAdvice"
                      pointcut-ref="leeService"/>
-        <!-- ½«authority×ª»»³ÉÇÐÃæBean -->
+        <!-- å°†authorityè½¬æ¢æˆåˆ‡é¢Bean -->
         <!--<aop:aspect id="authorityMsg" ref="authority">-->
-            <!--&lt;!&ndash; ¶¨ÒåÒ»¸öBeforeÔöÇ¿´¦Àí£¬Ö±½ÓÖ¸¶¨ÇÐÈëµã±í´ïÊ½-->
-                <!--ÒÔÇÐÃæBeanÖÐµÄauthority()·½·¨×÷ÎªÔöÇ¿´¦Àí·½·¨ &ndash;&gt;-->
+            <!--&lt;!&ndash; å®šä¹‰ä¸€ä¸ªBeforeå¢žå¼ºå¤„ç†ï¼Œç›´æŽ¥æŒ‡å®šåˆ‡å…¥ç‚¹è¡¨è¾¾å¼-->
+                <!--ä»¥åˆ‡é¢Beanä¸­çš„authority()æ–¹æ³•ä½œä¸ºå¢žå¼ºå¤„ç†æ–¹æ³• &ndash;&gt;-->
             <!--<aop:before pointcut=-->
                 <!--"execution(* org.cbpmc.message.dwr.*.*Message*(..))"-->
                 <!--method="authority"/>-->
         <!--</aop:aspect>-->
-        <!-- ½«authority×ª»»³ÉÇÐÃæBean
-            ÇÐÃæBeanµÄÐÂÃû³ÆÎª£ºauthorityAspect -->
+        <!-- å°†authorityè½¬æ¢æˆåˆ‡é¢Bean
+            åˆ‡é¢Beançš„æ–°åç§°ä¸ºï¼šauthorityAspect -->
         <aop:aspect id="authorityAspect" ref="authority">
-            <!-- ¶¨ÒåÒ»¸öBeforeÔöÇ¿´¦Àí£¬Ö±½ÓÖ¸¶¨ÇÐÈëµã±í´ïÊ½
-                ÒÔÇÐÃæBeanÖÐµÄauthority()·½·¨×÷ÎªÔöÇ¿´¦Àí·½·¨ -->
+            <!-- å®šä¹‰ä¸€ä¸ªBeforeå¢žå¼ºå¤„ç†ï¼Œç›´æŽ¥æŒ‡å®šåˆ‡å…¥ç‚¹è¡¨è¾¾å¼
+                ä»¥åˆ‡é¢Beanä¸­çš„authority()æ–¹æ³•ä½œä¸ºå¢žå¼ºå¤„ç†æ–¹æ³• -->
             <aop:before pointcut=
                 "execution(* org.cbpmc.auction.dwr.*.getItemByWiner(..))
                 or execution(* org.cbpmc.auction.dwr.*.getBidByUser(..))

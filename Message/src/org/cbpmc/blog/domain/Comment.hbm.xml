@@ -1,23 +1,23 @@
-<?xml version="1.0" encoding="GBK"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping
 	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- HibernateÓ³ÉäÎÄ¼þµÄ¸ùÔªËØ -->
+<!-- Hibernateæ˜ å°„æ–‡ä»¶çš„æ ¹å…ƒç´  -->
 <hibernate-mapping package="org.cbpmc.blog.domain">
-    <!-- Ã¿¸öclassÔªËØÓ³ÉäÒ»¸ö³Ö¾Ã»¯Àà -->
+    <!-- æ¯ä¸ªclasså…ƒç´ æ˜ å°„ä¸€ä¸ªæŒä¹…åŒ–ç±» -->
     <class name="Comment" table="comment_inf">
-        <!-- Ó³Éä±êÊ¶ÊôÐÔ -->
+        <!-- æ˜ å°„æ ‡è¯†å±žæ€§ -->
         <id name="id" column="comment_id">
-            <!-- Ö¸¶¨Ö÷¼üÉú³ÉÆ÷²ßÂÔ -->
+            <!-- æŒ‡å®šä¸»é”®ç”Ÿæˆå™¨ç­–ç•¥ -->
             <generator class="identity"/>
         </id>
-        <!-- Ó³ÉäÆÕÍ¨ÊôÐÔ -->
+        <!-- æ˜ å°„æ™®é€šå±žæ€§ -->
         <property name="user" type="string"/>
         <property name="email" type="string"/>
         <property name="url" type="string"/>
         <property name="content" type="text"/>
         <property name="addTime" type="java.util.Date"/>
-        <!-- Ó³Éä¸ÃÆÀÂÛ¹ØÁªµÄBlogÎÄÕÂ -->
+        <!-- æ˜ å°„è¯¥è¯„è®ºå…³è”çš„Blogæ–‡ç«  -->
         <many-to-one name="blog" class="Blog"
                      column="blog_id" not-null="true"/>
     </class>

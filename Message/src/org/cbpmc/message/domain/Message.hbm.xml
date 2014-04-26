@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="GBK"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping
 	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- HibernateÓ³ÉäÎÄ¼þµÄ¸ùÔªËØ -->
+<!-- Hibernateæ˜ å°„æ–‡ä»¶çš„æ ¹å…ƒç´  -->
 <hibernate-mapping package="org.cbpmc.message.domain">
-	<!-- Ã¿¸öclassÔªËØÓ³ÉäÒ»¸ö³Ö¾Ã»¯Àà -->
+	<!-- æ¯ä¸ªclasså…ƒç´ æ˜ å°„ä¸€ä¸ªæŒä¹…åŒ–ç±» -->
 	<class name="Message" table="message_inf">
-		<!-- Ó³Éä±êÊ¶ÊôÐÔ -->
+		<!-- æ˜ å°„æ ‡è¯†å±žæ€§ -->
 		<id name="id" type="int" column="message_id">
-			<!-- Ö¸¶¨Ö÷¼üÉú³ÉÆ÷²ßÂÔ -->
+			<!-- æŒ‡å®šä¸»é”®ç”Ÿæˆå™¨ç­–ç•¥ -->
 			<generator class="identity"/>
 		</id>
-		<!-- Ó³ÉäÆÕÍ¨ÊôÐÔ -->
+		<!-- æ˜ å°„æ™®é€šå±žæ€§ -->
 		<property name="title" type="string"/>
 		<property name="content" type="string"/>
-		<!-- Ó³ÉäN-1¹ØÁªÊµÌå -->
+		<!-- æ˜ å°„N-1å…³è”å®žä½“ -->
 		<many-to-one name="user" column="owner_id"
 			not-null="true" class="User" lazy="false"/>
 	</class>
