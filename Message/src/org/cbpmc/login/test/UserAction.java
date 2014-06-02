@@ -1,8 +1,10 @@
 package org.cbpmc.login.test;//package test;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ActionContext;
 import org.cbpmc.message.domain.User;
 import org.cbpmc.message.service.MessageService;
+
 
 public class UserAction extends ActionSupport {
 
@@ -32,6 +34,9 @@ public class UserAction extends ActionSupport {
                 default:
                     this.success = true;
                     this.message = "恭喜您，登录成功";
+                    /*set ths session*/
+                    ActionContext actionContext = ActionContext.getContext();
+
                     return SUCCESS;
             }
         } catch (Exception e) {
