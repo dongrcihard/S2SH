@@ -5,6 +5,8 @@ import com.opensymphony.xwork2.ActionContext;
 import org.cbpmc.message.domain.User;
 import org.cbpmc.message.service.MessageService;
 
+import java.util.Map;
+
 
 public class UserAction extends ActionSupport {
 
@@ -36,7 +38,8 @@ public class UserAction extends ActionSupport {
                     this.message = "恭喜您，登录成功";
                     /*set ths session*/
                     ActionContext actionContext = ActionContext.getContext();
-
+                    Map session = actionContext.getSession();
+                    session.put("XCJ_USER", user.getName());
                     return SUCCESS;
             }
         } catch (Exception e) {

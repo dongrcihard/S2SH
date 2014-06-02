@@ -19,7 +19,7 @@
           destroy-method="close"
           p:driverClass="com.mysql.jdbc.Driver"
           p:jdbcUrl="jdbc:mysql://localhost:3306/test"
-          p:user="dxl123"
+          p:user="root"
           p:password="dxl123"
           p:maxPoolSize="200"
           p:minPoolSize="2"
@@ -176,7 +176,7 @@
 
     <!-- 定义一个普通Bean实例，该Bean实例将进行权限控制 -->
     <bean id="authority"
-          class="org.cbpmc.message.authority.AuthorityInterceptor"/>
+          class="org.cbpmc.auction.authority.AuthorityInterceptor"/>
     <!--在Spring容器中注册Bean-->
     <!-- 配置事务切面Bean,指定事务管理器 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">

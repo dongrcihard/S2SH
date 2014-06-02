@@ -1,7 +1,10 @@
+/*
 Ext.onReady(function () {
 
     Ext.form.Field.prototype.msgTarget = "side";
-    /*创建窗口*/
+    */
+/*创建窗口*//*
+
     var form1 = Ext.create('Ext.form.Panel', {
         title: '用户登录窗口',
         width: 263,
@@ -10,7 +13,7 @@ Ext.onReady(function () {
 //        labelWidth: 60,
         minButtonWidth: 80,
         buttonAlign: "left",
-        renderTo: Ext.get("loginWin"),
+        renderTo: Ext.get("helloWin"),
 //        defaults: {width: 180},
         items: [
             {
@@ -60,7 +63,7 @@ Ext.onReady(function () {
                             url: 'user.action',
                             method: 'post',
                             success: function (form, action) {
-                                document.location = "main.jsp";
+                                document.location = "index.jsp";
                                 Ext.MessageBox.show({
                                     title: "登录成功！",
                                     msg: action.result.message,
@@ -87,4 +90,4 @@ Ext.onReady(function () {
             }
         ]
     });
-});
+});*/

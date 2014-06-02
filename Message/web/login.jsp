@@ -21,21 +21,21 @@
 <div>
         <div id="header">
             <div id="top_left">
-                <img src="image/logo.jpg"/>
+                <img src="image/login/logo.jpg"/>
             </div>
         </div>
         <div id="middle">
             <div id="mid_left">
-                <img src="image/middle_content_bg.jpg"/>
+                <img src="image/login/middle_content_bg.jpg"/>
                 <div id="loginWin"></div>
             </div>
             <div id="line">
-                <img src="image/line.jpg"/>
+                <img src="image/login/line.jpg"/>
             </div>
         </div>
         <div id="bottom">
             <div id="bot_left">
-                <img src="image/bottom_bg.jpg"/>
+                <img src="image/login/bottom_bg.jpg"/>
                 <span id="copyright">版权归属:中国印钞造币总公司技术中心 Copyright©2013 CBPMC All Rights Reserved</span>
             </div>
             <div id="bot_right"></div>

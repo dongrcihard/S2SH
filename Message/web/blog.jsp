@@ -238,7 +238,7 @@ var showAddBlog = function()
                     fieldLabel: '文章标题', // 表单控件的Label
                     name: 'title', // 表单控件的名称
                     allowBlank: false, // 输入校验：不允许为空
-                    minLength: 10 // 最少必须输入10个字符
+                    minLength: 1 // 最少必须输入10个字符
                 },
                 {
                     xtype: 'htmleditor', // 指定使用富文本编辑器
@@ -246,7 +246,7 @@ var showAddBlog = function()
                     name: 'content', // 表单控件的名称
                     height: 270,
                     allowBlank: false, // 输入校验：不允许为空
-                    minLength: 40 // 最少必须输入10个字符
+                    minLength: 4 // 最少必须输入10个字符
                 }
             ],
             // 为表单设置按钮

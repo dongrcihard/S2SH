@@ -78,7 +78,7 @@ public class AuctionDwr
     }
     // 添加物品的方法
     public int addItem(String name , String desc , String remark
-            , double initPrice, int avail , int kind , HttpSession sess)
+            , double initPrice, int avail , int kind, HttpSession sess)
             throws Exception
     {
         // 从HttpSession中取出userId属性
