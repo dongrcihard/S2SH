@@ -54,16 +54,16 @@ function showDialog(element)
 
 function showPost()
 {
-	if (curUser > 0)
-	{
-		// 只有当用户已经登录时才显示发帖对话框
-		showDialog(post);
-	}
-	else
-	{
-		alert("请先登录系统！");
-	}
-	return false;
+    if (curUser > 0)
+    {
+        // 只有当用户已经登录时才显示发帖对话框
+        showDialog(post);
+    }
+    else
+    {
+        alert("请先登录系统！");
+    }
+    return false;
 }
 
 //------------用户登录------------

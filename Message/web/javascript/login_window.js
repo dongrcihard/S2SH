@@ -18,6 +18,7 @@ Ext.onReady(function () {
                 fieldLabel: "用户名",
                 id: "txtName",
                 name: 'user.name',
+                value: '董学良',
                 allowBlank: false,
                 blankText: "用户名不能为空!"
             },
@@ -27,6 +28,7 @@ Ext.onReady(function () {
                 allowBlank: false,
                 blankText: "密码不能为空!",
                 name: 'user.pass',
+                value: '123',
                 inputType: 'password'
             }
         ],

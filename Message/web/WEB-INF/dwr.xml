@@ -5,9 +5,9 @@
 	"http://getahead.org/dwr/dwr30.dtd">
 <dwr>
 	<allow>
-		<!-- 使用spring创建器，创建一个名为mm的JavaScript对象 -->
+		<!-- 使用spring创建器，创建一个名为ms的JavaScript对象 -->
 		<create creator="spring" javascript="ms">
-			<!-- 将Spring容器中的messManager创建成名为mm的对象 -->
+			<!-- 将Spring容器中的messManager创建成名为ms的对象 -->
 			<param name="beanName" value="messageDwr"/>
 			<!-- 使用include元素定义哪些方法将被暴露到客户端 -->
 			<include method="createMessage"/>

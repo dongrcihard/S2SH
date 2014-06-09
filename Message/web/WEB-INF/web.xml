@@ -40,6 +40,10 @@
 			<param-value>true</param-value>
 		</init-param>
 	</servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>org.cbpmc.login.servlet.Logout</servlet-class>
+    </servlet>
     <!-- 指定核心Servlet的URL映射 -->
     <servlet-mapping>
 		<servlet-name>dwr-invoker</servlet-name>

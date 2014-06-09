@@ -1,93 +1,58 @@
-/*
-Ext.onReady(function () {
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
 
-    Ext.form.Field.prototype.msgTarget = "side";
-    */
-/*创建窗口*//*
 
-    var form1 = Ext.create('Ext.form.Panel', {
-        title: '用户登录窗口',
-        width: 263,
-        height: 140,
-        frame: true,
-//        labelWidth: 60,
-        minButtonWidth: 80,
-        buttonAlign: "left",
-        renderTo: Ext.get("helloWin"),
-//        defaults: {width: 180},
-        items: [
-            {
-                xtype: 'textfield',
-                fieldLabel: "用户名",
-                id: "txtName",
-                name: 'user.name',
-                allowBlank: false,
-                blankText: "用户名不能为空!"
-            },
-            {
-                xtype: 'textfield',
-                fieldLabel: "密码",
-                allowBlank: false,
-                blankText: "密码不能为空!",
-                name: 'user.pass',
-                inputType: 'password'
-            }
-        ],
-        buttons: [
-            {
-                text: '<div style="color: red">登  录</div>',
-                type: 'submit',
-                margin: '0 0 0 20px',
-                handler: function () {
-                    if (form1.getForm().isValid()) {
-                        Ext.MessageBox.show({
-                            title: '请等待',
-                            msg: '正在加载',
-                            progressText: '',
-                            width: 150,
-                            progress: true,
-                            closable: 'false',
-                            animEl: 'loading'
-                        });
-                        var f = function (v) {
-                            return function () {
-                                var i = v / 11;
-                                Ext.MessageBox.updateProgress(i, '');
-                            }
-                        };
-                        for (var i = 1; i < 33; i++) {
-                            setTimeout(f(i), i * 1500);
-                        }
-                        //提交到服务器操作
-                        form1.form.doAction('submit', {
-                            url: 'user.action',
-                            method: 'post',
-                            success: function (form, action) {
-                                document.location = "index.jsp";
-                                Ext.MessageBox.show({
-                                    title: "登录成功！",
-                                    msg: action.result.message,
-                                    icon: Ext.MessageBox.INFO
-                                });
-                            },
-                            failure: function (form, action) {
-                                Ext.MessageBox.show({
-                                    title: "登录失败！",
-                                    msg: action.result.message,
-                                    buttons: Ext.MessageBox.OK,
-                                    icon: Ext.MessageBox.ERROR
-                                });
-                            }
-                        });
-                    }
-                }},
-            {
-                text: '<div style="color: #04408c">重  置</div>',
-                margin: '0 0 0 35px',
-                handler: function () {
-                    form1.getForm().reset();
-                }
-            }
-        ]
-    });
-});*/
+var task = {
+    run: function() {
+        var date = new Date();
+        var str = "今天是";
+        str = str + (date.getYear() + 1900).toString() + "年";
+        str = str + (date.getMonth() + 1).toString() + "月";
+        str = str + date.getDate() + "日";
+        str = str + "  ";
+        str = str + "星期";
+        var day = date.getDay();
+        switch (day) {
+            case 0 :
+                day = "日";
+                break;
+            case 1 :
+                day = "一";
+                break;
+            case 2 :
+                day = "二";
+                break;
+            case 3 :
+                day = "三";
+                break;
+            case 4 :
+                day = "四";
+                break;
+            case 5 :
+                day = "五";
+                break;
+            default :
+                day = "六";
+        }
+        str = str + day;
+        str = str + "  ";
+        str = str + checkTime(date.getHours()) + "时";
+        str = str + checkTime(date.getMinutes()) + "分";
+        str = str + checkTime(date.getSeconds()) + "秒";
+        str = ":  " + str;
+        Ext.getElementById("now_time").value = str;
+    },
+    interval: 1000
+}
+
+Ext.onReady(function(){
+    /*startTime()*/;
+    Ext.TaskManager.start(task);
+})
+
+
+

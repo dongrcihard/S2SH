@@ -39,7 +39,7 @@ public class UserAction extends ActionSupport {
                     /*set ths session*/
                     ActionContext actionContext = ActionContext.getContext();
                     Map session = actionContext.getSession();
-                    session.put("XCJ_USER", user.getName());
+                    session.put("userId", user.getName());
                     return SUCCESS;
             }
         } catch (Exception e) {

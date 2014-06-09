@@ -15,6 +15,14 @@
     <link href="css/html.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="javascript/login_window.js"></script>
     <title>欢迎光临高速清分专用设备实时远程专家诊断系统</title>
+    <%
+        //获取
+        if (session.getAttribute("userId") != null) {
+            //using send redirect method is better than the forward
+            response.sendRedirect("main.jsp");
+        }
+    %>
+
 </head>
 <body style="margin: 0; background-color: #013cc4">
 <%--整体页面--%>

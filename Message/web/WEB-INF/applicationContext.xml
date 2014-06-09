@@ -112,8 +112,8 @@
     <bean id="mailSender"
           class="org.springframework.mail.javamail.JavaMailSenderImpl"
           p:host="smtp.126.com"
-          p:username="dongxueliang123"
-          p:password="d198233">
+          p:username="s2shstudy"
+          p:password="webstudy">
         <property name="javaMailProperties">
             <props>
                 <prop key="mail.smtp.auth">true</prop>
@@ -124,7 +124,7 @@
     <!--配置邮件信息-->
     <bean id="mailMessage"
           class="org.springframework.mail.SimpleMailMessage"
-          p:from="dongxueliang123@126.com"
+          p:from="s2shstudy@126.com"
           p:subject="竞价通知"/>
 
 

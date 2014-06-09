@@ -4,15 +4,183 @@
 }
 
 body {
-
+    background-color: #dee;
+    margin: auto;
 }
 
 #header {
 
 }
 
-#user {
+#userinfo {
     margin: auto;
-    height: 20px;
+    height: 25px;
     width: 950px;
+}
+
+#user {
+    float: left;
+}
+
+#time {
+    float: left;
+}
+
+#logout {
+    float: right;
+}
+
+.user_area {
+    color: blue;
+    font-weight: bolder;
+    font-size: 16px;
+    font-family: Microsoft YaHei,tahoma,arial,verdana,sans-serif;
+}
+
+#now_time {
+    border: 0;
+    width: 350px;
+    background-color: #dee;
+}
+
+a.user_area {
+    color: red;
+}
+
+.line {
+    width: 950px;
+    margin: auto;
+    height: 2px;
+    background-color: red;
+}
+
+#pages {
+    margin: auto;
+    width: 950px;
+    height: 35px;
+}
+
+.caption {
+    color: #333;
+    font-weight: bolder;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.td_caption {
+    width: 190px;
+    font-family: Microsoft YaHei,tahoma,arial,verdana,sans-serif;
+}
+
+#sub_caption {
+    width: 950px;
+    height: 25px;
+    margin: auto;
+}
+
+#sub_caption_name {
+    float: left;
+}
+
+#content {
+    /*it is margin which makes the content background center*/
+    margin: auto;
+    background: url("../image/main/content.jpg") no-repeat;
+    height: 300px;
+    width: 950px;
+}
+
+.content_data {
+    position: relative;
+    text-align: center;
+    border: 0;
+    background: transparent;
+    color: #229;
+    font-weight: bolder;
+    font-size: 16px;
+    font-family: Microsoft YaHei,tahoma,arial,verdana,sans-serif;
+}
+
+#batch_no {
+    /*use the relative property for text position control */
+    top: 15px;
+    left: 10px;
+    width: 120px;
+}
+
+#step_no {
+    /*use the relative property for text position control */
+    top: 115px;
+    left: -115px;
+    width: 120px;
+}
+
+#total_bns {
+    /*use the relative property for text position control */
+    top: 235px;
+    left: -235px;
+    width: 120px;
+}
+
+#rm_bns {
+    /*use the relative property for text position control */
+    top: 235px;
+    left: 138px;
+    width: 120px;
+}
+
+#dmo_lab {
+    /*use the relative property for text position control */
+    top: 220px;
+    left: 155px;
+    width: 50px;
+}
+
+#dmo_bns {
+    /*use the relative property for text position control */
+    top: 245px;
+    left: 110px;
+    width: 30px;
+}
+
+#dmt_lab {
+    /*use the relative property for text position control */
+    top: 220px;
+    left: 135px;
+    width: 50px;
+}
+
+#dmt_bns {
+    /*use the relative property for text position control */
+    top: 245px;
+    left: 90px;
+    width: 30px;
+}
+
+#smo_lab {
+    /*use the relative property for text position control */
+    top: 220px;
+    left: 130px;
+    width: 50px;
+}
+
+#smo_bns {
+    /*use the relative property for text position control */
+    top: 245px;
+    left: 75px;
+    width: 50px;
+}
+
+#smt_lab {
+    /*use the relative property for text position control */
+    top: 220px;
+    left: 95px;
+    width: 50px;
+}
+
+#smt_bns {
+    /*use the relative property for text position control */
+    top: 245px;
+    left: 40px;
+    width: 50px;
 }
